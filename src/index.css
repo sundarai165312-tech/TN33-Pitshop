@@ -1,0 +1,196 @@
+/* ============================================================
+   TN 33 PITSHOP - Global CSS Design System
+   Theme: Industrial Garage – Red, Orange, Black
+   ============================================================ */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  /* Brand Colors */
+  --clr-primary:       #E8341C;   /* Racing Red */
+  --clr-primary-dark:  #B01A08;   /* Deep Red */
+  --clr-secondary:     #FF6B1A;   /* Flame Orange */
+  --clr-accent:        #FFAA33;   /* Amber Glow */
+  --clr-black:         #0A0A0A;   /* True Black */
+  --clr-dark:          #111111;   /* Dark Charcoal */
+  --clr-dark-2:        #1A1A1A;   /* Card Black */
+  --clr-dark-3:        #222222;   /* Surface Dark */
+  --clr-dark-4:        #2D2D2D;   /* Border Dark */
+  --clr-text:          #F0EDE8;   /* Off-White Text */
+  --clr-text-muted:    #A09890;   /* Muted Text */
+  --clr-text-dim:      #6B6560;   /* Dimmed Text */
+
+  /* Gradients */
+  --grad-fire:         linear-gradient(135deg, #E8341C 0%, #FF6B1A 50%, #FFAA33 100%);
+  --grad-dark-fire:    linear-gradient(135deg, #B01A08 0%, #E8341C 60%, #FF6B1A 100%);
+  --grad-hero:         linear-gradient(160deg, #0A0A0A 0%, #1A0A05 40%, #2A0E05 70%, #0A0A0A 100%);
+  --grad-card:         linear-gradient(145deg, #1A1A1A, #222222);
+
+  /* Typography */
+  --font-heading:      'Playfair Display', Georgia, serif;
+  --font-body:         'Inter', -apple-system, sans-serif;
+  --font-accent:       'Caveat', cursive;
+
+  /* Spacing */
+  --space-xs:   0.25rem;
+  --space-sm:   0.5rem;
+  --space-md:   1rem;
+  --space-lg:   1.5rem;
+  --space-xl:   2.5rem;
+  --space-2xl:  4rem;
+  --space-3xl:  6rem;
+
+  /* Border Radius */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow:   600ms ease;
+
+  /* Shadows */
+  --shadow-fire:   0 0 30px rgba(232, 52, 28, 0.4), 0 0 60px rgba(255, 107, 26, 0.15);
+  --shadow-card:   0 8px 32px rgba(0,0,0,0.6);
+  --shadow-glow:   0 0 20px rgba(232, 52, 28, 0.6);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--clr-black);
+  color: var(--clr-text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a  { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--clr-dark); }
+::-webkit-scrollbar-thumb { background: var(--clr-primary); border-radius: 3px; }
+
+/* ---------- Selection ---------- */
+::selection { background: var(--clr-primary); color: #fff; }
+
+/* ---------- Utility Classes ---------- */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.section-tag {
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  color: var(--clr-secondary);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--clr-text);
+  margin-bottom: var(--space-md);
+}
+
+.section-title span {
+  background: var(--grad-fire);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--clr-text-muted);
+  max-width: 580px;
+  line-height: 1.8;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.9rem 2rem;
+  background: var(--grad-fire);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-fire); }
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.9rem 2rem;
+  border: 2px solid var(--clr-primary);
+  color: var(--clr-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.btn-outline:hover {
+  background: var(--clr-primary);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+
+/* ---------- Fire Divider ---------- */
+.fire-line {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--grad-fire);
+  border-radius: 2px;
+  margin-bottom: var(--space-xl);
+}
+
+/* ---------- Noise Texture ---------- */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}

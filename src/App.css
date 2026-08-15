@@ -1,0 +1,103 @@
+/* ---- App Global Styles ---- */
+.font-accent { font-family: var(--font-accent); }
+
+/* ---- Floating WhatsApp Button ---- */
+.floating-wa {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.floating-wa svg { width: 28px; height: 28px; }
+
+.floating-wa:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+
+.floating-wa__ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  animation: waPing 1.8s ease-out infinite;
+}
+
+@keyframes waPing {
+  0%  { transform: scale(1); opacity: 0.8; }
+  100%{ transform: scale(1.6); opacity: 0; }
+}
+
+.floating-wa__tooltip {
+  position: absolute;
+  right: 68px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #25D366;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.floating-wa__tooltip::after {
+  content: '';
+  position: absolute;
+  right: -5px; top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right: none;
+  border-left-color: #25D366;
+}
+
+.floating-wa:hover .floating-wa__tooltip { opacity: 1; }
+
+/* ---- Scroll to Top ---- */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 999;
+  width: 44px;
+  height: 44px;
+  background: var(--clr-dark-3);
+  border: 1px solid rgba(232,52,28,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-text);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-card);
+}
+
+.scroll-top:hover {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ---- Section Decoration ---- */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(232,52,28,0.3), transparent);
+  margin: 0 auto;
+  max-width: 800px;
+}
